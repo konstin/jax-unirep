@@ -1,0 +1,601 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.7">
+    
+    
+      
+        <title>Supplementary information - Jax-unirep - jax-unirep: A performant reimplementation of UniRep in JAX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.b8ac9624.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.28f3ef9a.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@7.1.2/dist/mermaid.css">
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-12498603-3","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#supplementary-information-jax-unirep" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="jax-unirep: A performant reimplementation of UniRep in JAX" class="md-header-nav__button md-logo" aria-label="jax-unirep: A performant reimplementation of UniRep in JAX">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            jax-unirep: A performant reimplementation of UniRep in JAX
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Supplementary information - Jax-unirep
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/ElArkk/jax-unirep/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ElArkk/jax-unirep
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="jax-unirep: A performant reimplementation of UniRep in JAX" class="md-nav__button md-logo" aria-label="jax-unirep: A performant reimplementation of UniRep in JAX">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    jax-unirep: A performant reimplementation of UniRep in JAX
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/ElArkk/jax-unirep/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ElArkk/jax-unirep
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../advanced/" title="Advanced Usage" class="md-nav__link">
+      Advanced Usage
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../development/" title="Development" class="md-nav__link">
+      Development
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../api/" title="API Docs" class="md-nav__link">
+      API Docs
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#speed-profiling-of-unirep" class="md-nav__link">
+    Speed profiling of Unirep
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reimplementation-main-points" class="md-nav__link">
+    Reimplementation Main Points
+  </a>
+  
+    <nav class="md-nav" aria-label="Reimplementation Main Points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensor-ops-reimplementation" class="md-nav__link">
+    Tensor Ops Reimplementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utility-reimplementation" class="md-nav__link">
+    Utility Reimplementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apis" class="md-nav__link">
+    APIs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#top-model" class="md-nav__link">
+    Top model
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ElArkk/jax-unirep/edit/master/docs/suppinf.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="supplementary-information-jax-unirep">Supplementary information - Jax-unirep</h1>
+<h2 id="speed-profiling-of-unirep">Speed profiling of Unirep</h2>
+<p>The functions used for profiling the original UniRep implementation
+and our <code>jax-unirep</code> reimplementation respectively:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># assume babbler is imported from tf-unirep</span>
+<span class="k">def</span> <span class="nf">profile_tf_unirep</span><span class="p">(</span><span class="n">seqs</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">variable_scope</span><span class="p">(</span><span class="s2">&quot;embed_matrix&quot;</span><span class="p">,</span> <span class="n">reuse</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">AUTO_REUSE</span><span class="p">):</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">babbler</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">model_path</span><span class="o">=</span><span class="n">MODEL_WEIGHT_PATH</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">seqs</span><span class="p">:</span>
+            <span class="n">avg</span><span class="p">,</span> <span class="n">final</span><span class="p">,</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">get_rep</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+
+<span class="c1"># assume get_reps is imported from jax-unirep</span>
+<span class="k">def</span> <span class="nf">profile_jax_unirep</span><span class="p">(</span><span class="n">seqs</span><span class="p">):</span>
+    <span class="n">get_reps</span><span class="p">(</span><span class="n">seqs</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="
+    Flame graph of the original UniRep's implementation,
+    down to 10 levels deep from the profiling function that was called.
+" src="../figures/unirep-profile.png" /></p>
+<p><img alt="
+    Flame graph of the jax-unirep reimplementation,
+    down to 10 levels deep from the profiling function that was called.
+" src="../figures/jax-unirep-profile.png" /></p>
+<p>As is visible from the code execution flamegraph,
+the unreasonably long time that it takes to process ten sequences
+was probably due to the time spent in TensorFlow's session.
+Because of TensorFlow's compiled nature,
+we thus deduced that the majority of the execution time
+was most likely in the graph compilation phase.
+Unfortunately, cProfile could not give us any further detail
+beyond the <code>_pywrap_tensorflow_internal.TF_SessionRun_wrapper</code>
+in the call graph,
+meaning we were unable to conveniently peer into the internals of TF execution
+without digging further.</p>
+<h2 id="reimplementation-main-points">Reimplementation Main Points</h2>
+<h3 id="tensor-ops-reimplementation">Tensor Ops Reimplementation</h3>
+<p>The process of tensor ops reimplementation were as follows.</p>
+<p>Firstly, we started from the RNN cell (<code>mLSTM1900_step</code>),
+which sequentially walks down the protein sequence
+and generates the single step embedding.
+We thus end up with a "unit cell" function:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">mlstm1900_step</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">carry</span><span class="p">,</span> <span class="n">x_t</span><span class="p">):</span>
+    <span class="n">h_t</span><span class="p">,</span> <span class="n">c_t</span> <span class="o">=</span> <span class="n">carry</span>
+    <span class="c1"># Unit cell implementation goes here.</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">h_t</span><span class="p">,</span> <span class="n">c_t</span><span class="p">),</span> <span class="n">h_t</span>
+</code></pre></div>
+
+<p>Secondly, we wrapped the RNN cell using <code>lax.scan</code>
+to scan over a single sequence.
+This is the <code>mlstm1900_batch</code> function:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">mlstm1900_batch</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+    <span class="c1"># code setup goes here.</span>
+    <span class="n">step_func</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">mlstm1900_step</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+    <span class="c1"># use of lax.scan below:</span>
+    <span class="p">(</span><span class="n">h_final</span><span class="p">,</span> <span class="n">c_final</span><span class="p">),</span> <span class="n">outputs</span> <span class="o">=</span> <span class="n">lax</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span>
+        <span class="n">step_func</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="p">(</span><span class="n">h_t</span><span class="p">,</span> <span class="n">c_t</span><span class="p">),</span> <span class="n">xs</span><span class="o">=</span><span class="n">batch</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">h_final</span><span class="p">,</span> <span class="n">c_final</span><span class="p">,</span> <span class="n">outputs</span>
+</code></pre></div>
+
+<p>Thirdly, we then used <code>jax.vmap</code>
+to vectorize the operation over multiple sequences,
+thus generating <code>mlstm1900</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">mlstm1900</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">mlstm1900_vmappable</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">mlstm1900_batch</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">batch</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="n">h_final</span><span class="p">,</span> <span class="n">c_final</span><span class="p">,</span> <span class="n">outputs</span> <span class="o">=</span> <span class="n">vmap</span><span class="p">(</span><span class="n">mlstm1900_vmappable</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">h_final</span><span class="p">,</span> <span class="n">c_final</span><span class="p">,</span> <span class="n">outputs</span>
+</code></pre></div>
+
+<p>Effectively, <code>jax.vmap</code> and <code>lax.scan</code>
+replace for-loops that we would otherwise write,
+which would incur Python type-checking overhead that would accumulate.
+<code>lax.scan</code> being effectively a pre-compiled for-loop
+enables pre-allocation of the necessary memory needed for backpropagation,
+which also contributes to a speed-up.
+As the for-loop type checking penalty is well-known in Python,
+a detailed comparison between <code>jax.vmap</code>, <code>lax.scan</code>, and a vanilla <code>for</code> loop
+is out of scope for this paper.
+The full source code is available in <code>jax_unirep/layers.py</code>.</p>
+<p>Besides reimplementation,
+we also took care to document the semantic meaning of tensor dimensions.
+This had the pleasant side effect of forcing us
+to order our tensor dimensions in a sane fashion,
+such that the "batch" or "sample" dimension was always the first one,
+with explicit documentation written to guide a new user on this convention.</p>
+<p>While reimplementing the model, we also generated a test suite for it.
+Most of our tests check that the shapes of returned tensors were correct.
+For the unit RNN cell, we provided an example-based test with random matrices.
+The same applied to the batch function.
+However, for the full forward model, we provided a property-based test,
+which checked that tensor dimensions were correct
+given different numbers of samples.
+These are available in the source <code>tests/</code> directory.
+As a known benefit with software testing,
+our tests allowed us to rebuild the full model piece by piece,
+while always making sure that each new piece did not break
+the existing pieces.</p>
+<h3 id="utility-reimplementation">Utility Reimplementation</h3>
+<p>For the <code>get_reps()</code> functionality,
+we copied quite a bit of source code from the original,
+including the original authors' implementation of
+embedding a sequence into an <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span>-by-10 embedding matrix first.
+However, we added tests to guarantee that they were robust,
+as well as technical documentation to clarify how it works.</p>
+<p>We did this because one way that deep learning models can be fragile
+is that the input tensors can be generated incorrectly
+but still have the expected shapes.
+Thus, though the structure of input tensors might be correct,
+their semantic meaning would be completely wrong.
+(Adversarial examples can be generated this way.)
+Thus, the input to the model has to be carefully controlled.
+Moreover, input tensors are <em>not</em> the raw-est form of data;
+for a protein engineer, the protein sequence is.
+Thus, having robustly tested functions that generate the input tensors
+with correct semantic meaning
+is crucial to having confidence
+that the model works correctly end-to-end.</p>
+<h3 id="apis">APIs</h3>
+<p>Because we expect the model to be used as a Python library,
+the model source and weights are packaged together.
+This makes it much more convenient for end-users,
+as the cognitive load of downloading starter weights is eliminated.</p>
+<p>The <code>get_reps()</code> function is designed
+such that it is flexible enough to accept a single sequence
+or an iterable of sequences.
+This also reduces cognitive load for end-users,
+some of whom might want to process only a single sequence,
+while others might be operating in batch mode.
+<code>get_reps()</code> also correctly handles sequences of multiple lengths,
+further simplifying usage for end-users.
+In particular, we spent time ensuring that
+<code>get_reps()</code> correctly batches sequences of the same size together
+before calculating their reps,
+while returning the reps in the same order as the sequences passed in.
+As usual, tests are provided,
+bringing the same degree of confidence as we would expect
+from tested software.</p>
+<h2 id="top-model">Top model</h2>
+<p>To test our reimplementation in a practical workflow,
+we recreated the GFP brightness prediction model
+that was introduced in the original paper.</p>
+<p>We trained the model on the same set of GFP mutants
+as the orignial authors did, but used the <code>get_reps</code> function
+to embed the protein sequences that we then passed to the
+classification model.
+The model performance shown below
+is based on 5-fold crossvalidation of the whole GFP dataset.
+The full analysis is available as a jupyter notebook in the 
+<code>jax-unirep</code> repository.</p>
+<p><img alt="
+    GFP brightness classification using
+    a logistic regression top model taking in the
+    1900-long average hidden state representations
+    of the GFP protein sequences.
+    Left: Distribution of GFP brightness values in the dataset.
+    Red dotted line indicates classification breakpoint.
+    Points to the left get labeled as &quot;Dark&quot;,
+    while points to the right get labeled &quot;Bright&quot;.
+    Right: Confusion matrix showing the
+    classification accuracy of the model.
+" src="../figures/top_model.png" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d1f5a259.min.js"></script>
+      <script src="../assets/javascripts/bundle.d5fec882.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.fae956e7.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+        <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
